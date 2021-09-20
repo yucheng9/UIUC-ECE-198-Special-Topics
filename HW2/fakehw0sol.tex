@@ -1,0 +1,124 @@
+% ---------
+%  Compile with "pdflatex hw0".
+% --------
+%!TEX TS-program = pdflatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt]{article}
+\usepackage{jeffe,handout,graphicx}
+\usepackage[utf8]{inputenc}		% Allow some non-ASCII Unicode in source
+
+% =========================================================
+%   Define common stuff for solution headers
+% =========================================================
+\pagenumbering{arabic}
+\Class{ECE 198}
+\Semester{Fall 2019}
+\Authors{1}
+\AuthorOne{Jin Yucheng}{yucheng9}
+%\AuthorTwo{Friday Caliban}{fcaliban}
+%\AuthorThree{Duncan Quagmire}{dquagmir}
+%\Section{}
+
+% =========================================================
+\begin{document}
+
+% ---------------------------------------------------------
+
+
+\HomeworkHeader{2}{1-4}	% homework number, problem number
+
+\begin{solution}
+%These are, without exception, inappropriate inquiries, a phrase which here means “all the wrong questions”.  Here are the questions you should have asked instead:
+%\begin{enumerate}[(a)]
+%\item Why would someone say something was stolen when it was never theirs to begin with?
+%\item How could someone who was missing be in two places at once?
+%\item Why would someone destroy one building when they really wanted to destroy another?
+%\end{enumerate}
+%\begin{enumerate} [(a)]
+
+\item (1) How many strings with 5 or more characters can be formed from the letters in SEERESS?
+ \item
+\noindent\fbox{
+    \parbox{\textwidth}{
+\item We have 1 R, 3 E's and 3 S's. There are 3 cases to consider:
+\begin{itemize}
+\item for strings with 7 characters, there are:
+ \begin{center}
+\Large{$\frac{7!}{1! 3! 3!}$} 
+\end{center}
+Totally 140 strings.
+\item for strings with 6 characters, we may remove either R, E, or S, there are:
+\begin{center}
+\Large{$\frac{6!}{3! 3!}$ + $\frac{6!}{1! 2! 3!}$ + $\frac{6!}{1! 2! 3!}$} 
+\end{center}
+Totally 140 strings.
+\item for strings with 5 characters, we may remove either R and E, R and S, E and S, E and E, or S and S, there are:
+\begin{center}
+\Large{$\frac{5!}{2! 3!}$ + $\frac{5!}{2! 3!}$ + $\frac{5!}{1! 2! 2!}$ + $\frac{5!}{1! 1! 3!}$ + $\frac{5!}{1! 1! 3!}$} 
+\end{center}
+Totally 90 strings.
+\end{itemize}
+Therefore, sum up the results of the above 3 cases, there are 140 + 140 + 90 = 370 strings with 5 or more characters that can be formed from SEERESS.
+    }
+}
+\item
+\item (2) Show that in $Z_{m}$ with addition modulo $m, m \geq 2, m$ is integer, satisfies closure, associative, commutative properties.
+ \item
+\noindent\fbox{
+    \parbox{\textwidth}{
+\begin{itemize}
+\item \textbf{Closure} If $a$ and $b$ belong to $Z_{m}$, then $a+_{m}b$ belongs to $Z_{m}$.
+\\ By definition, $a+_{m}b = (a + b)$ \textbf{mod} $m$ 
+\\ By the Division Theorem, there are unique integers $q, r$, such that $(a + b) = qm + r$, where $0 \leq r < m$
+\\ Therefore, for all $0 \leq r < m$, $(a + b) \equiv r$ \textbf{mod} $m$
+\\ Hence, from the definition of integers modulo $m$, $a+_{m}b \in Z_{m}$
+\end{itemize}
+  }
+}
+\noindent\fbox{
+    \parbox{\textwidth}{
+\begin{itemize}
+\item \textbf{Associativity} If $a$, $b$, and $c$ belong to $Z_{m}$, then $(a+_{m}b)+_{m}c = a + _{m}(b + _{m}c)$.
+\begin{align*}
+	 (a+_{m}b)+_{m}c
+	& = [(a + b) \textbf{ mod } m] + _{m}c  & \text{by definition of $+_{m}$} \\
+	& = [(a + b) + c] \textbf{ mod } m & \text{by definition of $+_{m}$}\\
+	& = [a + (b + c)] \textbf{ mod } m & \text{Associative Law of Addition} \\
+	& = a + _{m}[(b + c) \textbf{ mod } m] & \text{by definition of $+_{m}$}\\
+	& =  a + _{m}(b + _{m}c)  & \text{by definition of $+_{m}$} \\
+\end{align*}
+\item \textbf{Commutativity} If $a$, $b$ belong to $Z_{m}$, then $a+_{m}b = b + _{m}a$.
+\begin{align*}
+	 a+_{m}b
+	& = (a + b) \textbf{ mod } m  & \text{by definition of $+_{m}$} \\
+	& = (b + a) \textbf{ mod } m & \text{Commutative Law of Addition} \\
+	& = b + _{m}a & \text{by definition of $+_{m}$}\\
+\end{align*}
+\end{itemize}
+    }
+}
+\item
+\item (3) How many zeros are there at the end of 100!?
+ \item 
+\noindent\fbox{
+    \parbox{\textwidth}{
+\item The answer is 24.
+\item Because $10 = 2 \times 5$, $10^{2} = 2^{2} \times 5^{2}$, and $10^{n} = 2^{n} \times 5^{n}$, we need to find the number of 2 and 5 factors to determine the number of trailing 0's.
+\item There are $\lfloor 100/5 \rfloor$ = 20 terms divisible by $5^{1}$, $\lfloor 100/5^{2} \rfloor$ = 4 terms divisible by $5^{2}$, $\lfloor 100/5^{3} \rfloor$ = 0 terms divisible by $5^{3}$, therefore, the number of 5 factors is 24.
+\item There are $\lfloor 100/2 \rfloor$ = 50 terms divisible by $2^{1}$, the number of 2 factors is at least 50 and is larger than 24. Therefore, 100! is divisible by $10^{24}$ and no greater power of 10.
+\item Hence there are 24 0's at the end of 100!.
+    }
+}
+\item
+\item (4) Prove or disprove that $n^{2} - 79n + 1601$ is prime whenever $n$ is a positive integer.
+ \item
+\noindent\fbox{
+    \parbox{\textwidth}{
+\item $n = 1601$ is just a counterexample, since if $n = 1601$, then $n^{2} - 79n + 1601 = 1601^{2} - 79 \times 1601 + 1601 = 1601 \times (1601-79+1) = 1601 \times 1523$. So $n^{2} - 79n + 1601$ is not a prime when $n = 1601$.
+    }
+}
+
+\end{solution}
+
+\end{document}

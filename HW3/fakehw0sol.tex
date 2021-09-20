@@ -1,0 +1,159 @@
+% ---------
+%  Compile with "pdflatex hw0".
+% --------
+%!TEX TS-program = pdflatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt]{article}
+\usepackage{jeffe,handout,graphicx}
+\usepackage[utf8]{inputenc}		% Allow some non-ASCII Unicode in source
+
+% =========================================================
+%   Define common stuff for solution headers
+% =========================================================
+\pagenumbering{arabic}
+\Class{ECE 198}
+\Semester{Fall 2019}
+\Authors{1}
+\AuthorOne{Jin Yucheng}{yucheng9}
+%\AuthorTwo{Friday Caliban}{fcaliban}
+%\AuthorThree{Duncan Quagmire}{dquagmir}
+%\Section{}
+
+% =========================================================
+\begin{document}
+
+% ---------------------------------------------------------
+
+
+\HomeworkHeader{3}{1-6}	% homework number, problem number
+
+\begin{solution}
+%These are, without exception, inappropriate inquiries, a phrase which here means “all the wrong questions”.  Here are the questions you should have asked instead:
+%\begin{enumerate}[(a)]
+%\item Why would someone say something was stolen when it was never theirs to begin with?
+%\item How could someone who was missing be in two places at once?
+%\item Why would someone destroy one building when they really wanted to destroy another?
+%\end{enumerate}
+%\begin{enumerate} [(a)]
+
+\item (1) Show that if $m$ is an integer greater than 1 and $ac \equiv bc (\textbf{mod } m)$, then $a \equiv b (\textbf{mod } m/gcd(c, m))$.
+ \item
+\noindent\fbox{
+    \parbox{\textwidth}{\item
+\item Since $ac \equiv bc (\textbf{mod } m)$, then $m$ divides $(a-b) \cdot c$, which means there is an integer $k$ such that,
+\\ \\ $ac - bc = m \cdot k$
+\\ \\ $(a - b) \cdot c = m \cdot k$
+\\ \\ $(a - b)\cdot \frac{c}{gcd(c, m)} = \frac{m}{gcd(c, m)} \cdot k$
+\\ \\
+Suppose $gcd(c, m) \cdot s = c$, $gcd(c, m) \cdot f = m$, for some integers $s, f$ such that $gcd(s, f) = 1$.
+\\ \\ $(a - b)\cdot s = f \cdot k$
+\\ \\ $(a - b) = f \cdot \frac{k}{s}$ \\ \\
+ $\frac{k}{s}$ must be an integer, since $(a - b)\cdot s = f \cdot k$ and $gcd(s, f) = 1$, $k$ must be a multiple of $s$. Therefore, if $m$ is an integer greater than 1 and $ac \equiv bc (\textbf{mod } m)$, then $a \equiv b (\textbf{mod } m/gcd(c, m))$.
+
+    }
+}
+\item
+\item (2) Show that $F_{n+1}F_{n-1} - F_{n}^{2} = (-1)^{n}$ when $n$ is a positive integer.
+ \item
+\noindent\fbox{
+    \parbox{\textwidth}{
+\begin{itemize}
+\item Basis Step: Since $F_{0} = 0, F_{1} = 1, F_{2} = 0 + 1 = 1$. For $n = 1$, $F_{2}F_{0} - F_{1}^{2} = -1 = (-1)^1$, which satisfies $F_{n+1}F_{n-1} - F_{n}^{2} = (-1)^{n}$.
+\item Inductive Step: Suppose for every positive integer $k$ such that $k \leq n$, $F_{k+1}F_{k-1} - F_{k}^{2} = (-1)^{k}$. For $n+1$, \\ \\ $F_{n+2}F_{n} - F_{n+1}^{2}$ \\ \\ $ = (F_{n+1} + F_{n})F_{n} - F_{n+1}^{2} $ (because $F_{n} = F_{n+1} + F_{n-1}$ for every positive integer $n$)  \\ \\$= F_{n}F_{n+1} + F_{n}^{2} - F_{n+1}^{2} $
+\\ \\ $= F_{n}F_{n+1} + F_{n+1}F_{n-1} - (-1)^n - F_{n+1}^{2} $ (by the inductive hypothesis)
+\\ \\ $= (F_{n} + F_{n-1})F_{n+1} - (-1)^n - F_{n+1}^{2} $ 
+\\ \\ $= F_{n+1}^{2} - (-1)^n - F_{n+1}^{2} $  (because $F_{n} = F_{n+1} + F_{n-1}$ for every positive integer $n$)
+\end{itemize}
+  }
+}
+\noindent\fbox{
+    \parbox{\textwidth}{
+\item \qquad \quad $= - (-1)^n$ \\
+\item 
+\qquad \quad $= (-1)^{n+1}$
+\\ \\
+Therefore, for every positive integer $n$, $F_{n+1}F_{n-1} - F_{n}^{2} = (-1)^{n}$.
+  }
+}
+
+
+\item
+\item (3) Give a recursive definition of the function max so that max$(a_{1},a_{2},... ,a_{n})$ is the maximum of the $n$ numbers $a_{1}, a_{2},... ,a_{n}$.
+ \item 
+\noindent\fbox{
+    \parbox{\textwidth}{
+\item max is meaningful when $n$ is a positive integer.
+\begin{itemize}
+\item If n = 1, max$(a_{1})$ = $a_{1}$.
+\item If n = 2, if $a_{1} > a_{2}$, max$(a_{1}, a_{2}) = a_{1}$; else, max$(a_{1}, a_{2}) = a_{2}$.
+\item If n > 2, max$(a_{1},a_{2},... ,a_{n})$ = max(max$(a_{1},a_{2},... ,a_{n-1}), a_{n}$).
+\end{itemize}
+    }
+}
+\item
+\item (4) Give a recursive definition of the set of bit strings that are palindromes.
+ \item
+\noindent\fbox{
+    \parbox{\textwidth}{
+\item \begin{itemize}
+\item The empty string, the string 1 and 0 are palindromes.
+\\ Denote $P$ as the set of palindromes.
+\begin{center}
+$\epsilon \in P$ \\
+$1 \in P$ \\
+$0 \in P$
+\end{center}
+\item If the string has more than 1 bit, then it is a palindrome if and only if its first bit and last bit are both 1 or both 0, and the rest of the string is a palindrome.
+\\ Denote $S$ as the string. $S \in P$ if and only if,
+\begin{center}
+$S = 0s0, s \in P$\\
+or \\
+$S = 1s1, s \in P$
+\end{center}
+\end{itemize}
+    }
+}
+\item
+\item (5) Prove that the merge sort algorithm is correct.
+ \item
+\noindent\fbox{
+    \parbox{\textwidth}{
+\item \begin{itemize}
+\item Basis Step: If the input array has 0 element or 1 element, then merge sort is correct since 0 element or 1 element are already sorted.
+\item Inductive Step: If the input array has more than 1 element, suppose it has $n$ elements, and assume for any array with $k (k<n)$ elements, merge sort is correct.
+\\Because merge sort first divides the input array into 2 subarrays of roughly equal size, for these two subarrays, they both have elements less than $n$ (at most $\lfloor n/2 \rfloor + 1$ if $n$ is odd, $\lfloor n/2 \rfloor$ if $n$ is even). Because of the inductive hypothesis, for any array with less than $n$ elements, merge sort is correct, so it correctly sort these two subarrays. Then merge sort merges these two subarrays and correctly sorts the input array with $n$ elements.
+\end{itemize}
+}
+}
+\noindent\fbox{
+    \parbox{\textwidth}{
+\item
+Therefore, merge sort is correct (actually I assume merge sort can merge two sorted arrays correctly, since it is tedious to prove the correctness of "merge". The proof of the correctness of "merge" can be seen in Jeff Erickson's \textit{Algorithms}, page 28).
+    }
+}
+\item
+\item (6) Determine the worst-case complexity of the quick sort algorithm in terms of the number of comparisons used.
+ \item
+\noindent\fbox{
+    \parbox{\textwidth}{
+\item Quick sort is (from Jeff Erickson's \textit{Algorithms}, page 29),
+\item
+\item
+\item
+\item
+\item
+\item
+\item
+\item
+\item
+\item
+\item
+\item
+In QuickSort subroutine, there is one comparison of the array's size, in Partition subroutine, there is one comparison of deciding whether to swap. The worst-case for quick sort is every time the pivot is either the first element or the last element, so it will choose a pivot for $O(n)$ times in the worst-case, and Partition clearly runs in $O(n)$ time, so the quick sort's worst-case time complexity is $O(n^{2})$.
+    }
+}
+
+\end{solution}
+
+\end{document}

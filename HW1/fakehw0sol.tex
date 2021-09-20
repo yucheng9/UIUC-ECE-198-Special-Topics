@@ -1,0 +1,112 @@
+% ---------
+%  Compile with "pdflatex hw0".
+% --------
+%!TEX TS-program = pdflatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt]{article}
+\usepackage{jeffe,handout,graphicx}
+\usepackage[utf8]{inputenc}		% Allow some non-ASCII Unicode in source
+
+% =========================================================
+%   Define common stuff for solution headers
+% =========================================================
+\pagenumbering{arabic}
+\Class{ECE 198}
+\Semester{Fall 2019}
+\Authors{1}
+\AuthorOne{Jin Yucheng}{yucheng9}
+%\AuthorTwo{Friday Caliban}{fcaliban}
+%\AuthorThree{Duncan Quagmire}{dquagmir}
+%\Section{}
+
+% =========================================================
+\begin{document}
+
+% ---------------------------------------------------------
+
+
+\HomeworkHeader{1}{1-4}	% homework number, problem number
+
+\begin{solution} 
+%These are, without exception, inappropriate inquiries, a phrase which here means “all the wrong questions”.  Here are the questions you should have asked instead:
+%\begin{enumerate}[(a)]
+%\item Why would someone say something was stolen when it was never theirs to begin with?
+%\item How could someone who was missing be in two places at once?
+%\item Why would someone destroy one building when they really wanted to destroy another?
+%\end{enumerate}
+%\begin{enumerate} [(a)]
+
+\item (1) Prove that if $n$ is integer and $n^{3}+5$ is odd, then $n$ is even. Using (a) contraposition, and (b) contradiction.
+\item
+\noindent\fbox{
+    \parbox{\textwidth}{
+\item(a) We need to prove the contrapositve:
+\begin{center}
+If the integer $n$ is not even, then $n^{3}+5$ is not odd
+\end{center}
+is true.
+\item Assume $n$ is not even, then $n$ is odd. Therefore, by definition, $n = 2k + 1$ for some integer $k$. Substitute $2k + 1$ for $n$, then,
+\begin{center}
+$n^{3} + 5 = (2k + 1)^{3} + 5 = 8k^{3} + 12k^{2} + 6k + 6 = 2(4k^{3} + 6k^{2} + 3k + 3)$
+\end{center}
+which implies that $n^{3}+5$ is even, or equivalently, $n^{3}+5$ is not odd, so our proof by contraposition succeeds. Therefore, if $n$ is integer and $n^{3}+5$ is odd, then $n$ is even.
+\item  (b) Suppose if $n$ is integer and $n^{3}+5$ is odd, then $n$ is odd. Therefore, by definition, $n = 2k + 1$ for some integer $k$. Substitute $2k + 1$ for $n$, then,
+\begin{center}
+$n^{3} + 5 = (2k + 1)^{3} + 5 = 8k^{3} + 12k^{2} + 6k + 6 = 2(4k^{3} + 6k^{2} + 3k + 3)$
+\end{center}
+which implies that $n^{3} + 5$ is even, or equivalently, $n^{3}+5$ is not odd. This contradicts the condition that "$n^{3}+5$ is odd", so $n$ is not odd, $n$ is even. 
+    }
+}
+\item
+\item (2) Write 1, 2, ..., 2$n$ on a blackboard, where $n$ is an odd integer. Pick any two numbers, $j$ and $k$, erase them from the board and write $|j-k|$. Continue until only one integer is left on the board. Prove this integer must be odd.
+\item
+\noindent\fbox{
+    \parbox{\textwidth}{
+\item The game starts with totally $2n$ integers on the blackboard, where $n$ is odd. Every time we pick two integers $j$ and $k$, erase them from the board and write $|j - k|$, we decrease the total number of integers on board by 1. After we repeat the same procedure for $2n - 1$ times, there is only one integer remains on board. 
+\item From the beginning, there are odd number of odd integers ($n$ odd integers) and odd number of even integers ($n$ even integers). Assume $n$ is large enough, there are 3 possible choices for $j$ and $k$:
+\begin{itemize}
+\item if both $j$ and $k$ are odd, then $|j - k|$ is even. We erase 2 odd integers and add 1 even integer.
+\item if both $j$ and $k$ are even, then $|j - k|$ is even. We erase 2 even integers and add 1 even integer.
+\item if one of $j$ and $k$ is odd, and the other is even, then $|j - k|$ is odd. We erase 1 odd integer, 1 even integer, and add 1 odd integer.
+\end{itemize}
+All three cases result in obtaining odd number of odd integers and even number of even integers. 
+\item
+	}
+}
+\noindent\fbox{
+    \parbox{\textwidth}{
+\item Then by considering the three cases again:
+\begin{itemize}
+\item if both $j$ and $k$ are odd, then $|j - k|$ is even. We erase 2 odd integers and add 1 even integer.
+\item if both $j$ and $k$ are even, then $|j - k|$ is even. We erase 2 even integers and add 1 even integer.
+\item if one of $j$ and $k$ is odd, and the other is even, then $|j - k|$ is odd. We erase 1 odd integer, 1 even integer, and add 1 odd integer.
+\end{itemize}
+All three cases result in obtaining odd number of odd integers and odd number of even integers. We repeat the same procedure again and again for totally $2n - 1$ times (an odd number of times) until there is only one integer left. In some edge cases (such as we have erased all even integers), the choices for $j$ and $k$ will be limited (such as we can only pick 2 odd integers if we have erased all even integers), but this limitation of choices does not influence the result (the parity of the number of odd/even integers) of each trial.
+Therefore, after $2n - 1$ trials, we will obtain odd number of odd integers and even number of even integers. Since there is only one integer left on board after $2n - 1$ trials, there must be 1 odd integer and no even integer on board, so we have proved that the last integer on board must be odd.
+	}
+}
+\item
+\item (3) A bowl contains 10 red, 10 blue balls. A woman selects balls at random without looking. (a) how many balls must she select to be sure of having at least 3 of the same color? (b) how many must she select to be sure of having 3 blue balls?
+\item
+\noindent\fbox{
+    \parbox{\textwidth}{
+\item (a) She must select at least 5 balls to be sure of having at least 3 of the same color. Namely, the worst case is that she selects 2 red balls and 2 blue balls in her first 4 trials, and whatever ball she selects for the fifth trial, there must be 3 balls of the same color.
+\item (b) She must select at least 13 balls to be sure of having at least 3 blue balls. Namely, the worst case is that she selects 10 red balls and 2 blue balls in her first 12 trials, and she then selects a blue ball for the $13^{th}$ trial, there must be 3 blue balls.
+    }
+}
+\item
+\item (4) Prove that if there are 100,000,000 wage earners in the US who earn less than \$1,000,000 per year, there must be two who earned exactly the same amount of money, to the penny, last year.
+\noindent\fbox{
+    \parbox{\textwidth}{
+\item The pigeonhole principle states that:
+\item
+If $k$ is a positive integer and $k+1$ or more objects are placed into $k$ boxes, then there is at least one box containing two or more of the objects.
+\item
+There are 100,000,000 wage earners in the US who earn less than \$1,000,000 per year. So for 100,000,000 (the number of "objects") of these people, the total number of their possible annual wages (the number of "boxes") is 99,999,999 (because there are 99,999,999 numbers in this sequence: 0.01, 0.02, ..., 999,999.99), by the pigeonhole principle, 100,000,000 > 99,999,999, there must be two who earned exactly the same amount of money, to the penny, last year.
+	}
+}
+
+\end{solution}
+
+\end{document}
